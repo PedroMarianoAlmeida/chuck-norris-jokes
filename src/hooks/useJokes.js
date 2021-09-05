@@ -6,10 +6,31 @@ const useJokes = () => {
   const [error, setError] = useState(false);
   const [jokes, setJokes] = useState([]);
 
+  const getJokes = async () => {
+    try {
+      const res = await fetch("http://api.icndb.com/jokes/random");
+      if (res.ok) {
+        const data = await res.json();
+        setLoading(false);
+        setError(false);
+        setJokes(data.value);
+        console.log(data.value);
+      } else {
+        setLoading(false);
+        setError(true);
+      }
+    } catch (err) {
+      setLoading(false);
+      setError(true);
+    }
+  };
+
   useEffect(() => {
     if (startFetch === true) {
-      console.log("fetch started");
+      setLoading(true);
       setStartFetch(false);
+
+      getJokes();
     }
   }, [startFetch]);
 
