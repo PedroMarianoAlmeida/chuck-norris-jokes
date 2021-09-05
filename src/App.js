@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import ButtonTest from "./components/ButtonTest";
 import IconTest from "./components/IconTest";
+import TypographyTest from "./components/TypographyTest";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <header className="App-header">
         <ButtonTest />
         <IconTest />
+        <TypographyTest />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
