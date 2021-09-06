@@ -38,6 +38,7 @@ const JokeFormProvider = (props) => {
         `${categories.none} ${categories.explicity} ${categories.nerdy}`,
       ],
       ["Character Name", `${firstName} ${lastName}`],
+      ["Joke IDs", JSON.stringify(jokeIds)],
     ]);
   };
 

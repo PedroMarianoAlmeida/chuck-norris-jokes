@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
 import AddIcon from "@material-ui/icons/Add";
 import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
 
 import { JokeFormContext } from "./../../contexts/JokeFormContext";
 
@@ -15,7 +16,6 @@ const IdTab = () => {
 
   const idErrorValidator = (id) => {
     const value = Number(id);
-    console.log(value);
 
     if (!Number.isInteger(value)) return "Must be a valid number";
     if (value < 0 || value > 574) return "invalid ID";
@@ -27,6 +27,13 @@ const IdTab = () => {
     setErrorMessage(error);
 
     setCurrentId(e.target.value);
+  };
+
+  const handleClick = () => {
+    const temporaryJokesIds = [...jokeIds];
+    temporaryJokesIds.push(currentId);
+    setJokeIds(temporaryJokesIds);
+    setCurrentId("");
   };
 
   useEffect(() => {
@@ -42,9 +49,16 @@ const IdTab = () => {
         value={currentId}
         onChange={handleChange}
       />
-      <IconButton aria-label="add" color="primary" disabled={!!errorMessage}>
-        <AddIcon />
-      </IconButton>
+      <Box ml={2} display="inline">
+        <IconButton
+          aria-label="add"
+          color="primary"
+          disabled={!!errorMessage}
+          onClick={handleClick}
+        >
+          <AddIcon />
+        </IconButton>
+      </Box>
       <Typography color="error">{errorMessage}</Typography>
     </>
   );
