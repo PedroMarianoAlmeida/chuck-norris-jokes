@@ -44,9 +44,10 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   paper: {
     maxWidth: 500,
+    padding: theme.spacing(2),
   },
 }));
 
