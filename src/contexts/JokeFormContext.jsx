@@ -8,9 +8,10 @@ const JokeFormProvider = (props) => {
     initialNumberOfNumberJokes
   );
 
-  useEffect(() => {
-    console.log(numberOfRandomJokes);
-  }, [numberOfRandomJokes]);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.table([["Random jokes", numberOfRandomJokes]]);
+  };
 
   return (
     <JokeFormContext.Provider
@@ -18,9 +19,10 @@ const JokeFormProvider = (props) => {
         initialNumberOfNumberJokes,
         numberOfRandomJokes,
         setNumberOfNumberJokes,
+        handleSubmit,
       }}
     >
-      {props.children}
+      <form onSubmit={handleSubmit}>{props.children}</form>
     </JokeFormContext.Provider>
   );
 };

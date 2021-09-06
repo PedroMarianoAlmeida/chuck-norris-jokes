@@ -72,19 +72,17 @@ export default function JokeFormMain() {
         </Tabs>
       </AppBar>
       <JokeFormProvider>
-        <form>
-          <TabPanel value={value} index={0}>
-            <Random />
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-            <Categories />
-          </TabPanel>
-          <TabPanel value={value} index={2}>
-            <IdTab />
-          </TabPanel>
+        <TabPanel value={value} index={0}>
+          <Random />
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <Categories />
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          <IdTab />
+        </TabPanel>
 
-          <AllTabs />
-        </form>
+        <AllTabs />
       </JokeFormProvider>
     </Paper>
   );
