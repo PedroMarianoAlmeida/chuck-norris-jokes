@@ -3,12 +3,14 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 import useJokes from "./hooks/useJokes";
+import JokeFormMain from "./components/JokeForm/JokeFormMain";
 
 function App() {
   const [loading, error, jokes, setStartFetch] = useJokes();
 
   return (
     <div>
+      <JokeFormMain />
       <Button
         variant="contained"
         color="primary"
