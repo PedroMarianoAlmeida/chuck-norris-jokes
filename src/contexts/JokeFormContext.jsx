@@ -1,12 +1,25 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const JokeFormContext = createContext();
 
 const JokeFormProvider = (props) => {
-  const [example, setExample] = useState("example");
+  const initialNumberOfNumberJokes = 5;
+  const [numberOfRandomJokes, setNumberOfNumberJokes] = useState(
+    initialNumberOfNumberJokes
+  );
+
+  useEffect(() => {
+    console.log(numberOfRandomJokes);
+  }, [numberOfRandomJokes]);
 
   return (
-    <JokeFormContext.Provider value={{ example }}>
+    <JokeFormContext.Provider
+      value={{
+        initialNumberOfNumberJokes,
+        numberOfRandomJokes,
+        setNumberOfNumberJokes,
+      }}
+    >
       {props.children}
     </JokeFormContext.Provider>
   );
