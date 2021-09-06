@@ -1,7 +1,6 @@
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Box from "@material-ui/core/Box";
-import NumberOfJokes from "./NumberOfJokes";
 
 const Categories = () => {
   return (
@@ -21,8 +20,6 @@ const Categories = () => {
           label="Nerdy"
         />
       </Box>
-
-      <NumberOfJokes />
     </>
   );
 };
