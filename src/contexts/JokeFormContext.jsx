@@ -17,6 +17,9 @@ const JokeFormProvider = (props) => {
     nerdy: true,
   });
 
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+
   const [errorMessage, setErrorMessage] = useErrorMessage(
     currentTab,
     categories
@@ -31,6 +34,7 @@ const JokeFormProvider = (props) => {
         "Categories",
         `${categories.none} ${categories.explicity} ${categories.nerdy}`,
       ],
+      ["Character Name", `${firstName} ${lastName}`],
     ]);
   };
 
@@ -46,6 +50,10 @@ const JokeFormProvider = (props) => {
         categories,
         setCategories,
         categories,
+        firstName,
+        setFirstName,
+        lastName,
+        setLastName,
         errorMessage,
       }}
     >

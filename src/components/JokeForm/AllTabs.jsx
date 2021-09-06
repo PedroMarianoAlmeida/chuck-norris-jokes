@@ -10,7 +10,8 @@ import SportsMmaIcon from "@material-ui/icons/SportsMma";
 import { JokeFormContext } from "./../../contexts/JokeFormContext";
 
 const AllTabs = () => {
-  const { errorMessage } = useContext(JokeFormContext);
+  const { errorMessage, firstName, setFirstName, lastName, setLastName } =
+    useContext(JokeFormContext);
 
   return (
     <>
@@ -22,15 +23,23 @@ const AllTabs = () => {
         Would you dare put another name than Chuck Norris in the jokes?
       </Typography>
       <Box display="flex" justifyContent="space-around">
-        <TextField id="standard-basic" label="First Name" />
-        <TextField id="standard-basic" label="Last Name" />
+        <TextField
+          label="First Name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+        <TextField
+          label="Last Name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
       </Box>
       <Box pt={2} display="flex" justifyContent="center" flexDirection="column">
         <Button
           variant="contained"
           color="primary"
           type="submit"
-          disabled={errorMessage}
+          disabled={!!errorMessage}
         >
           <SportsMmaIcon /> Get my JOKES! <SportsMmaIcon />
         </Button>
