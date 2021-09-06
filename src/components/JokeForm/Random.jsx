@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
@@ -13,7 +13,9 @@ const Random = () => {
     setCurrentTab,
   } = useContext(JokeFormContext);
 
-  setCurrentTab("random");
+  useEffect(() => {
+    setCurrentTab("random");
+  }, []);
 
   const handleChange = (event, newValue) => {
     setNumberOfNumberJokes(newValue);
