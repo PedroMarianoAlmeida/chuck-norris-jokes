@@ -8,7 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 
-import AllTabs from "../AllTabs";
+import AllTabs from "./AllTabs";
+import Random from "./Random";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -67,7 +68,7 @@ export default function JokeFormMain() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        Item One
+        <Random />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
