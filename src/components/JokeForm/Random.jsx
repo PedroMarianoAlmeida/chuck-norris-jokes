@@ -10,7 +10,10 @@ const Random = () => {
     initialNumberOfNumberJokes,
     numberOfRandomJokes,
     setNumberOfNumberJokes,
+    setCurrentTab,
   } = useContext(JokeFormContext);
+
+  setCurrentTab("random");
 
   const handleChange = (event, newValue) => {
     setNumberOfNumberJokes(newValue);
