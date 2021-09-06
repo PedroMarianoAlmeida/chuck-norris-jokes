@@ -12,6 +12,7 @@ import AllTabs from "./AllTabs";
 import Random from "./Random";
 import Categories from "./Categories";
 import IdTab from "./IdTab";
+import JokeFormProvider from "../../contexts/JokeFormContext";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -70,17 +71,19 @@ export default function JokeFormMain() {
           <Tab label="ID" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
-        <Random />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <Categories />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <IdTab />
-      </TabPanel>
+      <JokeFormProvider>
+        <TabPanel value={value} index={0}>
+          <Random />
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <Categories />
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          <IdTab />
+        </TabPanel>
 
-      <AllTabs />
+        <AllTabs />
+      </JokeFormProvider>
     </Paper>
   );
 }

@@ -1,7 +1,13 @@
+import { useContext } from "react";
+
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 
+import { JokeFormContext } from "./../../contexts/JokeFormContext";
+
 const Random = () => {
+  const { example } = useContext(JokeFormContext);
+  console.log(example);
   return (
     <>
       <Typography align="center">Number of jokes</Typography>
