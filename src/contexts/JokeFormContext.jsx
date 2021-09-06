@@ -20,9 +20,12 @@ const JokeFormProvider = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
+  const [jokeIds, setJokeIds] = useState([]);
+
   const [errorMessage, setErrorMessage] = useErrorMessage(
     currentTab,
-    categories
+    categories,
+    jokeIds
   );
 
   const handleSubmit = (e) => {
@@ -54,6 +57,8 @@ const JokeFormProvider = (props) => {
         setFirstName,
         lastName,
         setLastName,
+        jokeIds,
+        setJokeIds,
         errorMessage,
       }}
     >
