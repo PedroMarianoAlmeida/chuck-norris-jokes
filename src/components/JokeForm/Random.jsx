@@ -1,7 +1,7 @@
-import Typography from "@material-ui/core/Typography";
+import NumberOfJokes from "./NumberOfJokes";
 
 const Random = () => {
-  return <Typography align="center">No extra parameters</Typography>;
+  return <NumberOfJokes />;
 };
 
 export default Random;

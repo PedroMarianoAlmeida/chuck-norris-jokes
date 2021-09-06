@@ -1,5 +1,4 @@
 import Typography from "@material-ui/core/Typography";
-import Slider from "@material-ui/core/Slider";
 import TextField from "@material-ui/core/TextField";
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
@@ -12,17 +11,6 @@ const AllTabs = () => {
       <Box pb={1}>
         <Divider />
       </Box>
-
-      <Typography align="center">Number of jokes</Typography>
-      <Slider
-        defaultValue={1}
-        aria-labelledby="discrete-slider"
-        valueLabelDisplay="auto"
-        step={1}
-        marks
-        min={1}
-        max={30}
-      />
 
       <Typography align="center">
         Would you dare put another name than Chuck Norris in the jokes?
