@@ -10,7 +10,7 @@ import SportsMmaIcon from "@material-ui/icons/SportsMma";
 import { JokeFormContext } from "./../../contexts/JokeFormContext";
 
 const AllTabs = () => {
-  const { handleSubmit } = useContext(JokeFormContext);
+  const { errorMessage } = useContext(JokeFormContext);
 
   return (
     <>
@@ -25,10 +25,20 @@ const AllTabs = () => {
         <TextField id="standard-basic" label="First Name" />
         <TextField id="standard-basic" label="Last Name" />
       </Box>
-      <Box pt={2} display="flex" justifyContent="center">
-        <Button variant="contained" color="primary" type="submit">
+      <Box pt={2} display="flex" justifyContent="center" flexDirection="column">
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          disabled={errorMessage}
+        >
           <SportsMmaIcon /> Get my JOKES! <SportsMmaIcon />
         </Button>
+        <Box my={1}>
+          <Typography align="center" color="error">
+            {errorMessage}
+          </Typography>
+        </Box>
       </Box>
     </>
   );

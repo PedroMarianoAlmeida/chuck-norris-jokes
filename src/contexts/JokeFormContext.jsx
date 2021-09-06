@@ -10,6 +10,8 @@ const JokeFormProvider = (props) => {
     initialNumberOfNumberJokes
   );
 
+  const [errorMessage, setErrorMessage] = useState("");
+
   const [categories, setCategories] = useState({
     none: true,
     explicity: true,
@@ -28,6 +30,24 @@ const JokeFormProvider = (props) => {
     ]);
   };
 
+  useEffect(() => {
+    setErrorMessage("");
+  }, [currentTab]);
+
+  useEffect(() => {
+    const emptyCategory = () =>
+      categories.none === false &&
+      categories.explicity === false &&
+      categories.nerdy === false;
+
+    if (currentTab === "categories" && emptyCategory()) {
+      setErrorMessage("Some category must be selected");
+    }
+    if (currentTab === "categories" && !emptyCategory()) {
+      setErrorMessage("");
+    }
+  }, [currentTab, categories]);
+
   return (
     <JokeFormContext.Provider
       value={{
@@ -39,6 +59,8 @@ const JokeFormProvider = (props) => {
         setCurrentTab,
         categories,
         setCategories,
+        categories,
+        errorMessage,
       }}
     >
       <form onSubmit={handleSubmit}>{props.children}</form>
