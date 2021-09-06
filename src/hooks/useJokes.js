@@ -8,9 +8,7 @@ const useJokes = () => {
 
   const getJokes = async () => {
     try {
-      const res = await fetch(
-        "http://api.icndb.com/jokes/random?limitTo=[nerdy]"
-      );
+      const res = await fetch("http://api.icndb.com/jokes/count");
       if (res.ok) {
         const data = await res.json();
         setLoading(false);

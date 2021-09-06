@@ -52,7 +52,6 @@ const JokeFormProvider = (props) => {
         setCurrentTab,
         categories,
         setCategories,
-        categories,
         firstName,
         setFirstName,
         lastName,
