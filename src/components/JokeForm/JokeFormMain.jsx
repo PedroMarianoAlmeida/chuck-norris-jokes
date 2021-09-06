@@ -11,6 +11,7 @@ import Paper from "@material-ui/core/Paper";
 import AllTabs from "./AllTabs";
 import Random from "./Random";
 import Categories from "./Categories";
+import IdTab from "./IdTab";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -76,7 +77,7 @@ export default function JokeFormMain() {
         <Categories />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <IdTab />
       </TabPanel>
 
       <AllTabs />
