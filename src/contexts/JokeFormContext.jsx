@@ -1,7 +1,7 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useContext } from "react";
 import useErrorMessage from "./../hooks/useErrorMessage";
 
-import useJokes from "./../hooks/useJokes";
+import { JokeWebApiContext } from "./JokeWebApiContext";
 
 export const JokeFormContext = createContext();
 
@@ -30,7 +30,7 @@ const JokeFormProvider = (props) => {
     jokeIds
   );
 
-  const { setStartFetch, setApiParameters } = useJokes();
+  const { setStartFetch, setApiParameters } = useContext(JokeWebApiContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 
-import icndbHandler from "./../functions/icndbHandler";
+import icndbHandler from "../functions/icndbHandler";
 
-const useJokes = () => {
+export const JokeWebApiContext = createContext();
+
+const JokeWebApiContextProvider = (props) => {
   const [startFetch, setStartFetch] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -38,7 +40,13 @@ const useJokes = () => {
     }
   }, [startFetch]);
 
-  return { loading, error, jokes, setStartFetch, setApiParameters };
+  return (
+    <JokeWebApiContext.Provider
+      value={{ loading, error, jokes, setStartFetch, setApiParameters }}
+    >
+      {props.children}
+    </JokeWebApiContext.Provider>
+  );
 };
 
-export default useJokes;
+export default JokeWebApiContextProvider;
