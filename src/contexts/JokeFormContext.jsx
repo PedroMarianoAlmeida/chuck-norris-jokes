@@ -30,7 +30,7 @@ const JokeFormProvider = (props) => {
     jokeIds
   );
 
-  const [loading, error, jokes, setStartFetch, setApiParameters] = useJokes();
+  const { setStartFetch, setApiParameters } = useJokes();
 
   const handleSubmit = (e) => {
     e.preventDefault();

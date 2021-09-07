@@ -37,7 +37,7 @@ const useJokes = () => {
     }
   }, [startFetch]);
 
-  return [loading, error, jokes, setStartFetch, setApiParameters];
+  return { loading, error, jokes, setStartFetch, setApiParameters };
 };
 
 export default useJokes;
