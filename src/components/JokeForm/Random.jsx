@@ -8,6 +8,7 @@ import { JokeFormContext } from "./../../contexts/JokeFormContext";
 const Random = () => {
   const {
     initialNumberOfNumberJokes,
+    maxNumberOfJokes,
     numberOfRandomJokes,
     setNumberOfNumberJokes,
     setCurrentTab,
@@ -31,7 +32,7 @@ const Random = () => {
         step={1}
         marks
         min={1}
-        max={30}
+        max={maxNumberOfJokes}
         value={numberOfRandomJokes}
         onChange={handleChange}
       />

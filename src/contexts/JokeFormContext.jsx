@@ -6,10 +6,10 @@ export const JokeFormContext = createContext();
 const JokeFormProvider = (props) => {
   const [currentTab, setCurrentTab] = useState(0);
 
-  const initialNumberOfNumberJokes = 5;
-  const [numberOfRandomJokes, setNumberOfNumberJokes] = useState(
-    initialNumberOfNumberJokes
-  );
+  const initialNumberJokes = 5;
+  const maxNumberOfJokes = 30;
+  const [numberOfRandomJokes, setNumberOfNumberJokes] =
+    useState(initialNumberJokes);
 
   const [categories, setCategories] = useState({
     none: true,
@@ -45,7 +45,8 @@ const JokeFormProvider = (props) => {
   return (
     <JokeFormContext.Provider
       value={{
-        initialNumberOfNumberJokes,
+        initialNumberJokes,
+        maxNumberOfJokes,
         numberOfRandomJokes,
         setNumberOfNumberJokes,
         handleSubmit,
