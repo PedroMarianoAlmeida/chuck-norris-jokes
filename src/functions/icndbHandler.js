@@ -52,9 +52,20 @@ const categoryRoute = (categories) => {
   return routeFiltered[0].route;
 };
 
-const multipleIdJoke = (baseUrl, idArray) => {
-  console.log(idArray);
-  return idArray.map((id) => fetch(`${baseUrl}/${id}`));
+const mainCharacterName = (firstName, lastName, currentComplement) => {
+  if (firstName === "" && lastName === "") return "";
+  let additionalParameters = currentComplement.includes("?") ? "&" : "?";
+
+  if (firstName !== "") additionalParameters += `firstName=${firstName}`;
+  if (firstName !== "" && lastName !== "") additionalParameters += "&";
+  if (lastName !== "") additionalParameters += `lastName=${lastName}`;
+  return additionalParameters;
+};
+
+const multipleIdJoke = (baseUrl, idArray, mainCharacterNameParameters) => {
+  return idArray.map((id) =>
+    fetch(`${baseUrl}/${id}${mainCharacterNameParameters}`)
+  );
 };
 
 const icndbHandler = (parametersData) => {
@@ -85,8 +96,15 @@ const icndbHandler = (parametersData) => {
       break;
   }
 
+  const mainCharacterNameParameters = mainCharacterName(
+    firstName,
+    lastName,
+    complementURL
+  );
+  complementURL += mainCharacterNameParameters;
+
   if (currentTab === "id" && jokeIds.length > 1)
-    return multipleIdJoke(baseURL, jokeIds);
+    return multipleIdJoke(baseURL, jokeIds, mainCharacterNameParameters);
 
   console.log(`${baseURL}${complementURL}`);
   return [fetch(`${baseURL}${complementURL}`)];
