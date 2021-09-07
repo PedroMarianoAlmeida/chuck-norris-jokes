@@ -9,6 +9,7 @@ const useJokes = () => {
   const [jokes, setJokes] = useState([]);
   const [apiParameters, setApiParameters] = useState({});
 
+  console.log("useJokes:", jokes);
   const getJokes = async () => {
     try {
       const res = await Promise.all(icndbHandler(apiParameters));
@@ -17,8 +18,7 @@ const useJokes = () => {
         const data = await Promise.all(res.map((data) => data.json()));
         setLoading(false);
         setError(false);
-        setJokes(data.value);
-        console.log(data);
+        setJokes(data);
       } else {
         setLoading(false);
         setError(true);

@@ -106,7 +106,6 @@ const icndbHandler = (parametersData) => {
   if (currentTab === "id" && jokeIds.length > 1)
     return multipleIdJoke(baseURL, jokeIds, mainCharacterNameParameters);
 
-  console.log(`${baseURL}${complementURL}`);
   return [fetch(`${baseURL}${complementURL}`)];
 };
 
