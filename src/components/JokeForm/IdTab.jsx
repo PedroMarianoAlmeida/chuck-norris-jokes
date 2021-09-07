@@ -5,28 +5,9 @@ import IconButton from "@material-ui/core/IconButton";
 import AddIcon from "@material-ui/icons/Add";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import Chip from "@material-ui/core/Chip";
 
 import { JokeFormContext } from "./../../contexts/JokeFormContext";
-
-const IdSelectedList = ({ idList }) => {
-  return (
-    <Box display="flex" mb={2} flexWrap="wrap" alignItems="center">
-      {!!idList.length && (
-        <>
-          <Typography>IDs: </Typography>
-          {idList.map((id) => (
-            <>
-              <Box m={1}>
-                <Chip label={id} />
-              </Box>
-            </>
-          ))}
-        </>
-      )}
-    </Box>
-  );
-};
+import IdSelectedList from "./IdSelectedList";
 
 const IdTab = () => {
   const { jokeIds, setJokeIds, setCurrentTab, maxNumberOfJokes } =
@@ -36,7 +17,6 @@ const IdTab = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const idErrorValidator = (id) => {
-    console.log(jokeIds, id, jokeIds.indexOf(id) !== -1);
     if (!Number.isInteger(id)) return "Must be a valid number";
     if (id <= 0 || id > 574) return "invalid ID";
     if (jokeIds.indexOf(id) !== -1) return "ID already included";
@@ -70,7 +50,7 @@ const IdTab = () => {
   return (
     <>
       <Box display="flex" flexDirection="column">
-        <IdSelectedList idList={jokeIds} />
+        <IdSelectedList />
         <Box display="flex" justifyContent="center">
           <Box display="flex" flexDirection="column">
             <TextField
