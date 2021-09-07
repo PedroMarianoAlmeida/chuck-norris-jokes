@@ -45,16 +45,16 @@ const JokeFormProvider = (props) => {
 
     setStartFetch(true);
 
-    console.table([
-      ["Current tab", currentTab],
-      ["Random jokes", numberOfRandomJokes],
-      [
-        "Categories",
-        `${categories.none} ${categories.explicity} ${categories.nerdy}`,
-      ],
-      ["Character Name", `${firstName} ${lastName}`],
-      ["Joke IDs", JSON.stringify(jokeIds)],
-    ]);
+    // console.table([
+    //   ["Current tab", currentTab],
+    //   ["Random jokes", numberOfRandomJokes],
+    //   [
+    //     "Categories",
+    //     `${categories.none} ${categories.explicity} ${categories.nerdy}`,
+    //   ],
+    //   ["Character Name", `${firstName} ${lastName}`],
+    //   ["Joke IDs", JSON.stringify(jokeIds)],
+    // ]);
   };
 
   return (
