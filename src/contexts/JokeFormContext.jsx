@@ -1,6 +1,8 @@
 import { createContext, useState, useEffect } from "react";
 import useErrorMessage from "./../hooks/useErrorMessage";
 
+import useJokes from "./../hooks/useJokes";
+
 export const JokeFormContext = createContext();
 
 const JokeFormProvider = (props) => {
@@ -28,8 +30,21 @@ const JokeFormProvider = (props) => {
     jokeIds
   );
 
+  const [loading, error, jokes, setStartFetch, setApiParameters] = useJokes();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setApiParameters({
+      currentTab,
+      numberOfRandomJokes,
+      categories,
+      firstName,
+      lastName,
+      jokeIds,
+    });
+
+    setStartFetch(true);
+
     console.table([
       ["Current tab", currentTab],
       ["Random jokes", numberOfRandomJokes],
