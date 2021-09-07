@@ -52,6 +52,11 @@ const categoryRoute = (categories) => {
   return routeFiltered[0].route;
 };
 
+const multipleIdJoke = (baseUrl, idArray) => {
+  console.log(idArray);
+  return idArray.map((id) => fetch(`${baseUrl}/${id}`));
+};
+
 const icndbHandler = (parametersData) => {
   const baseURL = "http://api.icndb.com/jokes";
   let complementURL = "";
@@ -72,13 +77,19 @@ const icndbHandler = (parametersData) => {
       break;
 
     case "categories":
-      console.log(categories);
       complementURL += categoryRoute(categories);
+      break;
+
+    case "id":
+      if (jokeIds.length === 1) complementURL += `/${jokeIds[0]}`;
       break;
   }
 
+  if (currentTab === "id" && jokeIds.length > 1)
+    return multipleIdJoke(baseURL, jokeIds);
+
   console.log(`${baseURL}${complementURL}`);
-  return fetch(`${baseURL}${complementURL}`);
+  return [fetch(`${baseURL}${complementURL}`)];
 };
 
 export default icndbHandler;

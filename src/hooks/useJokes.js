@@ -11,13 +11,14 @@ const useJokes = () => {
 
   const getJokes = async () => {
     try {
-      const res = await icndbHandler(apiParameters);
-      if (res.ok) {
-        const data = await res.json();
+      const res = await Promise.all(icndbHandler(apiParameters));
+
+      if (res.every((individualRes) => individualRes.ok)) {
+        const data = await Promise.all(res.map((data) => data.json()));
         setLoading(false);
         setError(false);
         setJokes(data.value);
-        console.log(data.value);
+        console.log(data);
       } else {
         setLoading(false);
         setError(true);
