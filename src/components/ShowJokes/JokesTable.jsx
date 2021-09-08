@@ -7,12 +7,26 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
+import Chip from "@material-ui/core/Chip";
 
 import { JokeWebApiContext } from "./../../contexts/JokeWebApiContext";
 
 const JokeRow = ({ jokeData }) => {
-  return <Typography>{JSON.stringify(jokeData)}</Typography>;
+  const { id, joke, categories } = jokeData;
+  console.log(categories);
+  return (
+    <TableRow>
+      <TableCell>{id}</TableCell>
+      <TableCell>{joke}</TableCell>
+      <TableCell>
+        {categories.length === 0 ? (
+          <Chip label={"none"} />
+        ) : (
+          categories.map((category) => <Chip label={category} key={category} />)
+        )}
+      </TableCell>
+    </TableRow>
+  );
 };
 
 const JokesTable = () => {
