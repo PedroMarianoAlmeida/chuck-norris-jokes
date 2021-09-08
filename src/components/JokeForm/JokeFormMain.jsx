@@ -63,27 +63,29 @@ export default function JokeFormMain() {
   };
 
   return (
-    <Paper className={classes.paper}>
-      <AppBar position="static">
-        <Tabs value={value} onChange={handleChange} aria-label="Joke options">
-          <Tab label="Random" {...a11yProps(0)} />
-          <Tab label="Category" {...a11yProps(1)} />
-          <Tab label="ID" {...a11yProps(2)} />
-        </Tabs>
-      </AppBar>
-      <JokeFormProvider>
-        <TabPanel value={value} index={0}>
-          <Random />
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <Categories />
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          <IdTab />
-        </TabPanel>
+    <Box display="flex" justifyContent="center" my={1}>
+      <Paper className={classes.paper}>
+        <AppBar position="static">
+          <Tabs value={value} onChange={handleChange} aria-label="Joke options">
+            <Tab label="Random" {...a11yProps(0)} />
+            <Tab label="Category" {...a11yProps(1)} />
+            <Tab label="ID" {...a11yProps(2)} />
+          </Tabs>
+        </AppBar>
+        <JokeFormProvider>
+          <TabPanel value={value} index={0}>
+            <Random />
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            <Categories />
+          </TabPanel>
+          <TabPanel value={value} index={2}>
+            <IdTab />
+          </TabPanel>
 
-        <AllTabs />
-      </JokeFormProvider>
-    </Paper>
+          <AllTabs />
+        </JokeFormProvider>
+      </Paper>
+    </Box>
   );
 }
