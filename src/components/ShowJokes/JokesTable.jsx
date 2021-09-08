@@ -43,22 +43,26 @@ const JokesTable = () => {
     return jokeArrayTreated;
   };
   return (
-    <TableContainer component={Paper}>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>id</TableCell>
-            <TableCell>Joke</TableCell>
-            <TableCell>Category</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {jokesTreated(jokes).map((joke) => (
-            <JokeRow jokeData={joke} key={joke.id} />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <>
+      {!!jokes.length && (
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>id</TableCell>
+                <TableCell>Joke</TableCell>
+                <TableCell>Category</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {jokesTreated(jokes).map((joke) => (
+                <JokeRow jokeData={joke} key={joke.id} />
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
+    </>
   );
 };
 
