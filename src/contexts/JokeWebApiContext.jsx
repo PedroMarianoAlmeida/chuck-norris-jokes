@@ -11,7 +11,6 @@ const JokeWebApiContextProvider = (props) => {
   const [jokes, setJokes] = useState([]);
   const [apiParameters, setApiParameters] = useState({});
 
-  console.log("useJokes:", jokes);
   const getJokes = async () => {
     try {
       const res = await Promise.all(icndbHandler(apiParameters));
