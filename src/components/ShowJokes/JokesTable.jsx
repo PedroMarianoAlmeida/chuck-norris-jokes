@@ -8,6 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Chip from "@material-ui/core/Chip";
+import Skeleton from "@material-ui/lab/Skeleton";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { JokeWebApiContext } from "./../../contexts/JokeWebApiContext";
@@ -17,6 +18,20 @@ const useStyles = makeStyles({
     fontWeight: 600,
   },
 });
+
+const LoadingPlaceholder = () => (
+  <TableRow>
+    <TableCell>
+      <Skeleton variant="rect" width={"400"} height={50} />
+    </TableCell>
+    <TableCell>
+      <Skeleton variant="rect" width={"400"} height={50} />
+    </TableCell>
+    <TableCell>
+      <Skeleton variant="rect" width={"400"} height={50} />
+    </TableCell>
+  </TableRow>
+);
 
 const JokeRow = ({ jokeData }) => {
   const { id, joke, categories } = jokeData;
@@ -37,7 +52,7 @@ const JokeRow = ({ jokeData }) => {
 };
 
 const JokesTable = () => {
-  const { jokes } = useContext(JokeWebApiContext);
+  const { jokes, loading } = useContext(JokeWebApiContext);
   const classes = useStyles();
 
   const jokesTreated = (jokeParam) => {
@@ -52,7 +67,7 @@ const JokesTable = () => {
   };
   return (
     <>
-      {!!jokes.length && (
+      {(!!jokes.length || loading) && (
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
@@ -69,9 +84,13 @@ const JokesTable = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {jokesTreated(jokes).map((joke) => (
-                <JokeRow jokeData={joke} key={joke.id} />
-              ))}
+              {loading ? (
+                <LoadingPlaceholder />
+              ) : (
+                jokesTreated(jokes).map((joke) => (
+                  <JokeRow jokeData={joke} key={joke.id} />
+                ))
+              )}
             </TableBody>
           </Table>
         </TableContainer>
