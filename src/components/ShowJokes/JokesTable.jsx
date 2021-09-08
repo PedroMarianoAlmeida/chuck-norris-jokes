@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 
 const JokeRow = ({ jokeData }) => {
   const { id, joke, categories } = jokeData;
-  console.log(categories);
+
   return (
     <TableRow>
       <TableCell>{id}</TableCell>

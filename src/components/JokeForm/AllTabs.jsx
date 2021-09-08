@@ -8,10 +8,13 @@ import Button from "@material-ui/core/Button";
 import SportsMmaIcon from "@material-ui/icons/SportsMma";
 
 import { JokeFormContext } from "./../../contexts/JokeFormContext";
+import { JokeWebApiContext } from "../../contexts/JokeWebApiContext";
 
 const AllTabs = () => {
   const { errorMessage, firstName, setFirstName, lastName, setLastName } =
     useContext(JokeFormContext);
+
+  const { loading } = useContext(JokeWebApiContext);
 
   return (
     <>
@@ -39,7 +42,7 @@ const AllTabs = () => {
           variant="contained"
           color="primary"
           type="submit"
-          disabled={!!errorMessage}
+          disabled={!!errorMessage || loading}
         >
           <SportsMmaIcon /> Get my JOKES! <SportsMmaIcon />
         </Button>
