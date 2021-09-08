@@ -38,9 +38,9 @@ const JokeRow = ({ jokeData }) => {
 
   return (
     <TableRow>
-      <TableCell>{id}</TableCell>
+      <TableCell align="center">{id}</TableCell>
       <TableCell>{joke}</TableCell>
-      <TableCell>
+      <TableCell align="center">
         {categories.length === 0 ? (
           <Chip label={"none"} />
         ) : (
