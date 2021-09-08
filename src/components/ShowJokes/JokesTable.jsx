@@ -8,8 +8,15 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Chip from "@material-ui/core/Chip";
+import { makeStyles } from "@material-ui/core/styles";
 
 import { JokeWebApiContext } from "./../../contexts/JokeWebApiContext";
+
+const useStyles = makeStyles({
+  bold: {
+    fontWeight: 600,
+  },
+});
 
 const JokeRow = ({ jokeData }) => {
   const { id, joke, categories } = jokeData;
@@ -31,6 +38,7 @@ const JokeRow = ({ jokeData }) => {
 
 const JokesTable = () => {
   const { jokes } = useContext(JokeWebApiContext);
+  const classes = useStyles();
 
   const jokesTreated = (jokeParam) => {
     console.log("jokeParam", jokeParam);
@@ -49,9 +57,15 @@ const JokesTable = () => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>id</TableCell>
-                <TableCell>Joke</TableCell>
-                <TableCell>Category</TableCell>
+                <TableCell align="center" className={classes.bold}>
+                  id
+                </TableCell>
+                <TableCell align="center" className={classes.bold}>
+                  Joke
+                </TableCell>
+                <TableCell align="center" className={classes.bold}>
+                  Category
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
