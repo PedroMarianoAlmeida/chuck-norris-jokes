@@ -7,6 +7,7 @@ import JokeFormMain from "./components/JokeForm/JokeFormMain";
 import JokesTable from "./components/ShowJokes/JokesTable";
 import JokeWebApiContextProvider from "./contexts/JokeWebApiContext";
 import MyHeader from "./components/HeaderAndFooter/MyHeader";
+import MyFooter from "./components/HeaderAndFooter/MyFooter";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <JokesTable />
         </JokeWebApiContextProvider>
       </Container>
+      <MyFooter />
     </>
   );
 }
