@@ -12,6 +12,8 @@ const useStyles = makeStyles((theme) => ({
 
   logo: {
     color: "white",
+    fontWeight: "bold",
+    fontSize: "1.2rem",
   },
 }));
 
@@ -20,7 +22,7 @@ const MyFooter = () => {
 
   return (
     <AppBar className={classes.footer}>
-      <Typography variant="h6" align="center">
+      <Typography align="center">
         by{" "}
         <Link
           href="https://www.pedroprogrammer.com/"
@@ -29,6 +31,15 @@ const MyFooter = () => {
           className={classes.logo}
         >
           Pedro Programmer
+        </Link>{" "}
+        and{" "}
+        <Link
+          href="https://www.icndb.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={classes.logo}
+        >
+          ICNDB
         </Link>
       </Typography>
     </AppBar>
