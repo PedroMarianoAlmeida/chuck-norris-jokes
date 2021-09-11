@@ -2,6 +2,7 @@ import "./App.css";
 
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import Box from "@material-ui/core/Box";
 
 import JokeFormMain from "./components/JokeForm/JokeFormMain";
 import JokesTable from "./components/ShowJokes/JokesTable";
@@ -14,12 +15,14 @@ function App() {
     <>
       <CssBaseline />
       <MyHeader />
-      <Container>
-        <JokeWebApiContextProvider>
-          <JokeFormMain />
-          <JokesTable />
-        </JokeWebApiContextProvider>
-      </Container>
+      <Box mb={10}>
+        <Container>
+          <JokeWebApiContextProvider>
+            <JokeFormMain />
+            <JokesTable />
+          </JokeWebApiContextProvider>
+        </Container>
+      </Box>
       <MyFooter />
     </>
   );
